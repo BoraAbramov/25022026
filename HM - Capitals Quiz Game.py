@@ -41,9 +41,8 @@ def get_user_choice():
                 return _choice
 
 def user_answer_is_correct(question_index, user_choice):
-    while user_choice != answers[question_index]:
-        return False
-    return True
+    if answers[question_index] == user_choice:
+        return True
 
 def remove_question(question_index):
     questions.remove(question_index)
@@ -55,6 +54,9 @@ def check_if_score_is_5(score):
 def check_if_miss_is_3(miss):
     if miss == 3:
         return True
+
+def _correct_answer(question_index):
+    return print(f'the correct answer is {answers[question_index]}')
 
 score = 0
 miss = 0
@@ -69,6 +71,7 @@ while True:
         score += 1
         print('You are correct')
     else:
+        _correct_answer(question_index)
         miss += 1
         print('You are wrong!')
 
