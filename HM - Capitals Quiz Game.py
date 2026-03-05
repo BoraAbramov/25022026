@@ -27,7 +27,7 @@ questions = [
 answers = [1, 3, 3, 2, 2, 4, 3, 4, 2, 3, 3, 2, 3, 2, 3, 4, 4, 3, 4, 2]
 
 def get_random_question():
-    random.choice(questions)
+    return random.choice(questions)
 
 def display_question(question_index):
     print(question_index)
@@ -35,13 +35,26 @@ def display_question(question_index):
 def get_user_choice():
     while True:
         _choice = input("please select one of the options (1-4)")
-        if 0 < int(_choice) < 5:
-            return _choice
-
+        if _choice.isdigit():
+            _choice = int(_choice)
+            if 0 < _choice < 5:
+                return _choice
 
 def user_answer_is_correct(question_index, user_choice):
+    while user_choice != answers[question_index]:
+        return False
+    return True
 
+def remove_question(question_index):
+    questions.remove(question_index)
 
+def check_if_score_is_5(score):
+    if score == 5:
+        return True
+
+def check_if_miss_is_3(miss):
+    if miss == 3:
+        return True
 
 score = 0
 miss = 0
