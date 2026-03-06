@@ -41,7 +41,7 @@ def get_user_choice():
                 return _choice
 
 def user_answer_is_correct(question_index, user_choice):
-    if answers[question_index] == user_choice:
+    if user_choice == answers[questions.index(question_index)]:
         return True
 
 def remove_question(question_index):
@@ -56,7 +56,7 @@ def check_if_miss_is_3(miss):
         return True
 
 def _correct_answer(question_index):
-    return print(f'the correct answer is {answers[question_index]}')
+    return print(f'the correct answer is {answers[questions.index(question_index)]}')
 
 score = 0
 miss = 0
@@ -71,9 +71,9 @@ while True:
         score += 1
         print('You are correct')
     else:
-        _correct_answer(question_index)
         miss += 1
         print('You are wrong!')
+        _correct_answer(question_index)
 
     # remove the used question so it will not appear again
     remove_question(question_index)
